@@ -1,5 +1,10 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  output: 'standalone',
+  experimental: {
+    serverComponentsExternalPackages: ['pg']
+  }
+}
 
 const withPWA = require('next-pwa')({
   dest: 'public',
