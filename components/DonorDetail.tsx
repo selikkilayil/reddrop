@@ -34,7 +34,7 @@ export default function DonorDetail({ donor, onClose }: DonorDetailProps) {
   const handleShare = async () => {
     const shareData = {
       title: `Blood Donor: ${donor.name}`,
-      text: `Blood Type: ${donor.blood_type}\nPhone: ${donor.phone}${donor.email ? `\nEmail: ${donor.email}` : ''}`,
+      text: `${donor.name}\n${donor.phone}\n${donor.blood_type}`,
     }
 
     if (navigator.share) {
@@ -50,7 +50,7 @@ export default function DonorDetail({ donor, onClose }: DonorDetailProps) {
   }
 
   const fallbackShare = () => {
-    const text = `Blood Donor: ${donor.name}\nBlood Type: ${donor.blood_type}\nPhone: ${donor.phone}${donor.email ? `\nEmail: ${donor.email}` : ''}`
+    const text = `${donor.name}\n${donor.phone}\n${donor.blood_type}`
     navigator.clipboard.writeText(text).then(() => {
       alert('Contact information copied to clipboard!')
     }).catch(() => {

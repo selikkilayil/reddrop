@@ -59,19 +59,19 @@ export default function DonorCard({ donor }: DonorCardProps) {
               e.stopPropagation()
               const shareData = {
                 title: `Blood Donor: ${donor.name}`,
-                text: `Blood Type: ${donor.blood_type}\nPhone: ${donor.phone}${donor.email ? `\nEmail: ${donor.email}` : ''}`,
+                text: `${donor.name}\n${donor.phone}\n${donor.blood_type}`,
               }
               if (navigator.share) {
                 try {
                   await navigator.share(shareData)
                 } catch (error) {
-                  const text = `Blood Donor: ${donor.name}\nBlood Type: ${donor.blood_type}\nPhone: ${donor.phone}${donor.email ? `\nEmail: ${donor.email}` : ''}`
+                  const text = `${donor.name}\n${donor.phone}\n${donor.blood_type}`
                   navigator.clipboard.writeText(text).then(() => {
                     alert('Contact copied to clipboard!')
                   })
                 }
               } else {
-                const text = `Blood Donor: ${donor.name}\nBlood Type: ${donor.blood_type}\nPhone: ${donor.phone}${donor.email ? `\nEmail: ${donor.email}` : ''}`
+                const text = `${donor.name}\n${donor.phone}\n${donor.blood_type}`
                 navigator.clipboard.writeText(text).then(() => {
                   alert('Contact copied to clipboard!')
                 })
