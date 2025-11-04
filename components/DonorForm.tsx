@@ -100,183 +100,81 @@ export default function DonorForm({ onClose, onDonorAdded }: DonorFormProps) {
             </button>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Full Name *
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-white text-gray-900 ${
-                    errors.name ? 'border-red-500' : 'border-gray-300'
-                  }`}
-                />
-                {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Blood Type *
-                </label>
-                <div className="relative">
-                  <select
-                    name="blood_type"
-                    value={formData.blood_type}
-                    onChange={handleChange}
-                    className={`w-full px-3 py-2 pr-8 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-white text-gray-900 cursor-pointer ${
-                      errors.blood_type ? 'border-red-500' : 'border-gray-300'
-                    }`}
-                    style={{ 
-                      appearance: 'none',
-                      WebkitAppearance: 'none',
-                      MozAppearance: 'none',
-                      backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e")`,
-                      backgroundPosition: 'right 0.5rem center',
-                      backgroundRepeat: 'no-repeat',
-                      backgroundSize: '1.5em 1.5em',
-                      paddingRight: '2.5rem'
-                    }}
-                  >
-                    <option value="" disabled style={{ color: '#9ca3af' }}>
-                      Select Blood Type
-                    </option>
-                    {bloodTypes.map(type => (
-                      <option key={type} value={type} style={{ color: '#111827', backgroundColor: '#ffffff' }}>
-                        {type}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                {errors.blood_type && <p className="text-red-500 text-sm mt-1">{errors.blood_type}</p>}
-              </div>
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Name Field */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Full Name *
+              </label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Enter donor's full name"
+                className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-white text-gray-900 text-lg ${
+                  errors.name ? 'border-red-500' : 'border-gray-300'
+                }`}
+              />
+              {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
             </div>
 
+            {/* Phone Field */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Phone *
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Phone Number *
               </label>
               <input
                 type="tel"
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
-                className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-white text-gray-900 ${
+                placeholder="Enter phone number"
+                className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-white text-gray-900 text-lg ${
                   errors.phone ? 'border-red-500' : 'border-gray-300'
                 }`}
               />
               {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
             </div>
 
+            {/* Blood Type Field */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Email
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Blood Type *
               </label>
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-white text-gray-900"
-              />
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Age
-                </label>
-                <input
-                  type="number"
-                  name="age"
-                  min="18"
-                  max="65"
-                  value={formData.age || ''}
+              <div className="relative">
+                <select
+                  name="blood_type"
+                  value={formData.blood_type}
                   onChange={handleChange}
-                  placeholder="Optional"
-                  className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-white text-gray-900 placeholder-gray-500 ${
-                    errors.age ? 'border-red-500' : 'border-gray-300'
+                  className={`w-full px-4 py-3 pr-12 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-white text-gray-900 cursor-pointer text-lg ${
+                    errors.blood_type ? 'border-red-500' : 'border-gray-300'
                   }`}
-                />
-                {errors.age && <p className="text-red-500 text-sm mt-1">{errors.age}</p>}
+                  style={{ 
+                    appearance: 'none',
+                    WebkitAppearance: 'none',
+                    MozAppearance: 'none',
+                    backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e")`,
+                    backgroundPosition: 'right 1rem center',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundSize: '1.5em 1.5em',
+                    paddingRight: '3rem'
+                  }}
+                >
+                  <option value="" disabled style={{ color: '#9ca3af' }}>
+                    Select Blood Type
+                  </option>
+                  {bloodTypes.map(type => (
+                    <option key={type} value={type} style={{ color: '#111827', backgroundColor: '#ffffff' }}>
+                      {type}
+                    </option>
+                  ))}
+                </select>
               </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Weight (kg)
-                </label>
-                <input
-                  type="number"
-                  name="weight"
-                  min="45"
-                  value={formData.weight || ''}
-                  onChange={handleChange}
-                  placeholder="Optional"
-                  className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-white text-gray-900 placeholder-gray-500 ${
-                    errors.weight ? 'border-red-500' : 'border-gray-300'
-                  }`}
-                />
-                {errors.weight && <p className="text-red-500 text-sm mt-1">{errors.weight}</p>}
-              </div>
+              {errors.blood_type && <p className="text-red-500 text-sm mt-1">{errors.blood_type}</p>}
             </div>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Address
-              </label>
-              <textarea
-                name="address"
-                rows={3}
-                value={formData.address}
-                onChange={handleChange}
-                placeholder="Optional"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-white text-gray-900 placeholder-gray-500"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Emergency Contact
-              </label>
-              <input
-                type="text"
-                name="emergency_contact"
-                value={formData.emergency_contact}
-                onChange={handleChange}
-                placeholder="Name and phone number (optional)"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-white text-gray-900 placeholder-gray-500"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Last Donation Date
-              </label>
-              <input
-                type="date"
-                name="last_donation"
-                value={formData.last_donation}
-                onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-white text-gray-900"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Medical Conditions
-              </label>
-              <textarea
-                name="medical_conditions"
-                rows={3}
-                value={formData.medical_conditions}
-                onChange={handleChange}
-                placeholder="Any medical conditions or medications..."
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-white text-gray-900 placeholder-gray-500"
-              />
-            </div>
+            {/* Optional fields hidden for now - only showing required fields */}
 
             <div className="flex gap-4 pt-4">
               <button
