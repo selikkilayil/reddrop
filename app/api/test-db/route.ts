@@ -4,6 +4,7 @@ import pool from '@/lib/db'
 export async function GET() {
   try {
     // Test database connection
+    console.log(process.env.DATABASE_URL);
     const result = await pool.query('SELECT NOW() as current_time, COUNT(*) as donor_count FROM donors')
     
     return NextResponse.json({
