@@ -35,6 +35,31 @@ export default function Header({
               >
                 + Add Donor
               </button>
+              <button
+                onClick={async () => {
+                  const url = `${window.location.origin}/public`
+                  if (navigator.share) {
+                    try {
+                      await navigator.share({
+                        title: 'Register as Blood Donor',
+                        text: 'Join our blood donor registry and help save lives!',
+                        url: url
+                      })
+                    } catch (error) {
+                      navigator.clipboard.writeText(url).then(() => {
+                        alert('Registration link copied to clipboard!')
+                      })
+                    }
+                  } else {
+                    navigator.clipboard.writeText(url).then(() => {
+                      alert('Registration link copied to clipboard!')
+                    })
+                  }
+                }}
+                className="bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+              >
+                📤 Share Registration
+              </button>
               {onLogout && (
                 <button
                   onClick={onLogout}
