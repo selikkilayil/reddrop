@@ -111,7 +111,7 @@ export default function DonorForm({ onClose, onDonorAdded }: DonorFormProps) {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 ${
+                  className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-white text-gray-900 ${
                     errors.name ? 'border-red-500' : 'border-gray-300'
                   }`}
                 />
@@ -161,7 +161,7 @@ export default function DonorForm({ onClose, onDonorAdded }: DonorFormProps) {
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
-                className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 ${
+                className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-white text-gray-900 ${
                   errors.phone ? 'border-red-500' : 'border-gray-300'
                 }`}
               />
@@ -177,7 +177,7 @@ export default function DonorForm({ onClose, onDonorAdded }: DonorFormProps) {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-white text-gray-900"
               />
             </div>
 
@@ -194,7 +194,7 @@ export default function DonorForm({ onClose, onDonorAdded }: DonorFormProps) {
                   value={formData.age || ''}
                   onChange={handleChange}
                   placeholder="Optional"
-                  className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 ${
+                  className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-white text-gray-900 placeholder-gray-500 ${
                     errors.age ? 'border-red-500' : 'border-gray-300'
                   }`}
                 />
@@ -212,7 +212,7 @@ export default function DonorForm({ onClose, onDonorAdded }: DonorFormProps) {
                   value={formData.weight || ''}
                   onChange={handleChange}
                   placeholder="Optional"
-                  className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 ${
+                  className={`w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-white text-gray-900 placeholder-gray-500 ${
                     errors.weight ? 'border-red-500' : 'border-gray-300'
                   }`}
                 />
@@ -230,7 +230,7 @@ export default function DonorForm({ onClose, onDonorAdded }: DonorFormProps) {
                 value={formData.address}
                 onChange={handleChange}
                 placeholder="Optional"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-white text-gray-900 placeholder-gray-500"
               />
             </div>
 
@@ -244,7 +244,7 @@ export default function DonorForm({ onClose, onDonorAdded }: DonorFormProps) {
                 value={formData.emergency_contact}
                 onChange={handleChange}
                 placeholder="Name and phone number (optional)"
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-white text-gray-900 placeholder-gray-500"
               />
             </div>
 
@@ -257,7 +257,7 @@ export default function DonorForm({ onClose, onDonorAdded }: DonorFormProps) {
                 name="last_donation"
                 value={formData.last_donation}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-white text-gray-900"
               />
             </div>
 
@@ -271,7 +271,7 @@ export default function DonorForm({ onClose, onDonorAdded }: DonorFormProps) {
                 value={formData.medical_conditions}
                 onChange={handleChange}
                 placeholder="Any medical conditions or medications..."
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 bg-white text-gray-900 placeholder-gray-500"
               />
             </div>
 
