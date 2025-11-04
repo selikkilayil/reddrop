@@ -23,52 +23,59 @@ export default function Header({
     <header className="blood-gradient text-white shadow-lg">
       <div className="container mx-auto px-4 py-6">
         <div className="flex flex-col space-y-4">
+          {/* Title and Logout - Always on top */}
           <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold flex items-center">
+            <h1 className="text-xl sm:text-2xl font-bold flex items-center">
               <span className="mr-2">🩸</span>
-              Red Drop
+              <span className="hidden sm:inline">Red Drop</span>
+              <span className="sm:hidden">Red Drop</span>
             </h1>
-            <div className="flex gap-3">
+            {onLogout && (
               <button
-                onClick={onAddDonor}
-                className="bg-white text-red-600 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+                onClick={onLogout}
+                className="bg-red-800 text-white px-3 py-2 rounded-lg font-semibold hover:bg-red-900 transition-colors text-sm"
               >
-                + Add Donor
+                Logout
               </button>
-              <button
-                onClick={async () => {
-                  const url = `${window.location.origin}/public`
-                  if (navigator.share) {
-                    try {
-                      await navigator.share({
-                        title: 'Register as Blood Donor',
-                        text: 'Join our blood donor registry and help save lives!',
-                        url: url
-                      })
-                    } catch (error) {
-                      navigator.clipboard.writeText(url).then(() => {
-                        alert('Registration link copied to clipboard!')
-                      })
-                    }
-                  } else {
+            )}
+          </div>
+
+          {/* Action Buttons - Mobile Responsive */}
+          <div className="flex flex-col sm:flex-row gap-3">
+            <button
+              onClick={onAddDonor}
+              className="bg-white text-red-600 px-4 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors flex items-center justify-center"
+            >
+              <span className="mr-2">+</span>
+              Add Donor
+            </button>
+            <button
+              onClick={async () => {
+                const url = `${window.location.origin}/public`
+                if (navigator.share) {
+                  try {
+                    await navigator.share({
+                      title: 'Register as Blood Donor',
+                      text: 'Join our blood donor registry and help save lives!',
+                      url: url
+                    })
+                  } catch (error) {
                     navigator.clipboard.writeText(url).then(() => {
                       alert('Registration link copied to clipboard!')
                     })
                   }
-                }}
-                className="bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
-              >
-                📤 Share Registration
-              </button>
-              {onLogout && (
-                <button
-                  onClick={onLogout}
-                  className="bg-red-800 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-900 transition-colors"
-                >
-                  Logout
-                </button>
-              )}
-            </div>
+                } else {
+                  navigator.clipboard.writeText(url).then(() => {
+                    alert('Registration link copied to clipboard!')
+                  })
+                }
+              }}
+              className="bg-blue-600 text-white px-4 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center"
+            >
+              <span className="mr-2">📤</span>
+              <span className="hidden sm:inline">Share Registration</span>
+              <span className="sm:hidden">Share Link</span>
+            </button>
           </div>
           
           <div className="flex flex-col sm:flex-row gap-4">
