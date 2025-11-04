@@ -6,6 +6,7 @@ interface HeaderProps {
   onSearchChange: (term: string) => void
   bloodTypeFilter: string
   onBloodTypeChange: (type: string) => void
+  onLogout?: () => void
 }
 
 const bloodTypes = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-']
@@ -15,7 +16,8 @@ export default function Header({
   searchTerm, 
   onSearchChange, 
   bloodTypeFilter, 
-  onBloodTypeChange 
+  onBloodTypeChange,
+  onLogout
 }: HeaderProps) {
   return (
     <header className="blood-gradient text-white shadow-lg">
@@ -26,12 +28,22 @@ export default function Header({
               <span className="mr-2">🩸</span>
               Red Drop
             </h1>
-            <button
-              onClick={onAddDonor}
-              className="bg-white text-red-600 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
-            >
-              + Add Donor
-            </button>
+            <div className="flex gap-3">
+              <button
+                onClick={onAddDonor}
+                className="bg-white text-red-600 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+              >
+                + Add Donor
+              </button>
+              {onLogout && (
+                <button
+                  onClick={onLogout}
+                  className="bg-red-800 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-900 transition-colors"
+                >
+                  Logout
+                </button>
+              )}
+            </div>
           </div>
           
           <div className="flex flex-col sm:flex-row gap-4">

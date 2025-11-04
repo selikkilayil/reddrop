@@ -5,6 +5,7 @@ import { Donor } from '@/lib/types'
 import DonorList from '@/components/DonorList'
 import DonorForm from '@/components/DonorForm'
 import Header from '@/components/Header'
+import LoginForm from '@/components/LoginForm'
 
 export default function Home() {
   const [donors, setDonors] = useState<Donor[]>([])
@@ -13,10 +14,26 @@ export default function Home() {
   const [loading, setLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState('')
   const [bloodTypeFilter, setBloodTypeFilter] = useState('')
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [authLoading, setAuthLoading] = useState(true)
 
   useEffect(() => {
-    fetchDonors()
+    // Check if user is already authenticated
+    const authStatus = localStorage.getItem('bloodDonorAuth')
+    if (authStatus === 'true') {
+      setIsAuthenticated(true)
+      fetchDonors()
+    } else {
+      setLoading(false)
+    }
+    setAuthLoading(false)
   }, [])
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      fetchDonors()
+    }
+  }, [isAuthenticated])
 
   const filterDonors = useCallback(() => {
     let filtered = donors
@@ -59,6 +76,31 @@ export default function Home() {
     setShowForm(false)
   }
 
+  const handleLogin = () => {
+    setIsAuthenticated(true)
+  }
+
+  const handleLogout = () => {
+    localStorage.removeItem('bloodDonorAuth')
+    setIsAuthenticated(false)
+    setDonors([])
+    setFilteredDonors([])
+  }
+
+  // Show loading screen while checking authentication
+  if (authLoading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600"></div>
+      </div>
+    )
+  }
+
+  // Show login form if not authenticated
+  if (!isAuthenticated) {
+    return <LoginForm onLogin={handleLogin} />
+  }
+
   return (
     <main className="min-h-screen">
       <Header 
@@ -67,6 +109,7 @@ export default function Home() {
         onSearchChange={setSearchTerm}
         bloodTypeFilter={bloodTypeFilter}
         onBloodTypeChange={setBloodTypeFilter}
+        onLogout={handleLogout}
       />
       
       <div className="container mx-auto px-4 py-6">
