@@ -18,7 +18,7 @@ export async function GET() {
     return NextResponse.json({
       success: false,
       error: error instanceof Error ? error.message : 'Unknown error',
-      database_url: process.env.DATABASE_URL ? 'Set' : 'Not set'
+      database_url: process.env.DATABASE_URL
     }, { status: 500 })
   }
 }
