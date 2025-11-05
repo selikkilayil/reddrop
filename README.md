@@ -207,10 +207,9 @@ openssl rand -base64 32
 ## 🤝 Community Support
 
 ### Getting Help
-- 📖 Check the [Wiki](../../wiki) for detailed guides
 - 🐛 Report issues in [GitHub Issues](../../issues)
 - 💬 Join discussions in [GitHub Discussions](../../discussions)
-- 📧 Email: [your-email@domain.com]
+- 📧 Email: [selik.kilayil@gmail.com]
 
 ### Success Stories
 We'd love to hear how your community uses this system! Share your story by opening a discussion.
